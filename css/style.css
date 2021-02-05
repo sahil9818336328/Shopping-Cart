@@ -453,21 +453,21 @@ form.cart {
 }
 .image-item:first-child {
   background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-    url("/images/hero-1.jpg") no-repeat center center/cover;
+    url("../images/hero-1.jpg") no-repeat center center/cover;
 }
 .image-item:nth-child(2) {
   background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-    url("/images/hero-2.jpg") no-repeat center center/cover;
+    url("../images/hero-2.jpg") no-repeat center center/cover;
 }
 .image-item:nth-child(3) {
   background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-    url("/images/hero-3.jpg") no-repeat center center/cover;
+    url("../images/hero-3.jpg") no-repeat center center/cover;
 }
 .image-item:nth-child(4) {
   background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-    url("/images/hero-4.jpg") no-repeat center center/cover;
+    url("../images/hero-4.jpg") no-repeat center center/cover;
 }
 .image-item:last-child {
   background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-    url("/images/hero-5.jpg") no-repeat center center/cover;
+    url("../images/hero-5.jpg") no-repeat center center/cover;
 }
