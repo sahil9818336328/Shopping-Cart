@@ -3,10 +3,14 @@
   --green-1: #1b4332;
   --green-2: #2d6a4f;
   --green-3: #40916c;
+  --green-4: #6b9080;
   --white: #edf6f9;
   --yellow: #fdffb6;
+  --yellow-1: #e9c46a;
   --red: #ba181b;
-  --trans: all 0.5s ease;
+  --grey: #e9ecef;
+  --grey-1: #adb5bd;
+  --trans: all 1s ease;
 }
 
 * {
@@ -21,6 +25,10 @@ body {
 /* sidenav */
 
 .sidenav {
+  z-index: 10;
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 60%;
   height: 100vh;
   background-color: var(--green-1);
@@ -81,10 +89,8 @@ nav,
 nav {
   align-items: center;
   justify-content: space-between;
-  width: 90%;
+  width: 100%;
   height: 10vh;
-  position: fixed;
-  top: 0;
 }
 nav ul {
   list-style: none;
@@ -100,7 +106,7 @@ nav ul a:hover {
   color: var(--green-3);
 }
 .container {
-  width: 90%;
+  width: 78%;
   height: 100%;
   margin: 0 auto;
 }
@@ -164,8 +170,9 @@ nav ul a:hover {
   cursor: pointer;
   color: var(--green-3);
 }
+
 /* media queries for navigation */
-@media screen and (min-width: 576px) {
+@media screen and (min-width: 650px) {
   .btn-container {
     display: none;
   }
@@ -177,4 +184,290 @@ nav ul a:hover {
   .sidenav {
     display: none;
   }
+}
+
+/* image carousel */
+.image-container {
+  overflow: hidden;
+  position: relative;
+  width: 100vw;
+  height: 90vh;
+  background-color: var(--grey-1);
+}
+.pop-up {
+  transform: translateY(-110%);
+  opacity: 0;
+  margin: 4.2rem auto;
+  background-color: var(--white);
+  width: 80%;
+  height: 80%;
+  display: grid;
+  z-index: 999;
+  grid-template-columns: repeat(2, 1fr);
+}
+.pop-up-visibility {
+  opacity: 1;
+  transform: translateY(0);
+  transition: var(--trans);
+}
+.pop-image {
+  z-index: 1;
+}
+.pop-image img {
+  box-shadow: 5px 6px 28px -2px rgba(0, 0, 0, 0.75);
+  margin: 2rem 2.2rem;
+  width: 35vw;
+  height: 50vh;
+  object-fit: cover;
+  border-radius: 0.5rem;
+}
+
+.buttons-one {
+  text-align: center;
+  display: flex;
+  justify-content: space-evenly;
+}
+.buttons-one a {
+  width: 17vw;
+  text-transform: capitalize;
+  background-color: var(--black);
+  color: var(--grey);
+  text-decoration: none;
+  padding: 1rem 2rem;
+}
+.buttons-one a:hover {
+  background-color: transparent;
+  border: 1px solid var(--black);
+  color: var(--black);
+  transition: var(--trans);
+}
+.buttons-one .fa-cart-plus,
+.buttons-one .fa-credit-card {
+  margin-right: 0.35rem;
+}
+.pop-info {
+  padding: 1rem;
+
+  z-index: 1;
+}
+.pop-info span {
+  display: inline-block;
+}
+.cart-info-nav li:first-child {
+  margin-bottom: 1rem;
+}
+.cart-info-nav li {
+  margin-bottom: 1rem;
+}
+
+.pop-info h2 {
+  margin-bottom: 1rem;
+}
+.pop-info p,
+.pop-info a,
+.pop-info span,
+.pop-info hr,
+.pop-info form,
+.pop-info ul,
+.pop-info div {
+  margin-bottom: 0.5rem;
+}
+.cart-contact {
+  margin-top: 2rem;
+  display: flex;
+  justify-content: flex-start;
+}
+.cart-contact .fa-star,
+.cart-contact .fa-truck,
+.cart-contact .fa-envelope {
+  margin-right: 1rem;
+}
+.cart-contact > div {
+  text-align: center;
+  width: 12.5vw;
+  height: 5vh;
+  padding: 0.5rem;
+  border: 1px solid var(--black);
+  background-color: var(--grey);
+  cursor: pointer;
+}
+.cart-contact > div:hover {
+  background-color: var(--black);
+  color: var(--white);
+  transition: var(--trans);
+}
+.pop-info select {
+  border: none;
+  outline: none;
+  background-color: var(--white);
+  border-bottom: 1px solid var(--grey-1);
+  width: 13vw;
+}
+form.cart {
+  display: flex;
+  justify-content: space-around;
+}
+.pop-info a {
+  color: var(--yellow-1);
+}
+.cart-info-nav {
+  list-style: none;
+}
+.cart-info-nav .buttons {
+  margin-bottom: 1rem;
+  /* background-color: var(--grey); */
+  width: 192px;
+}
+.cart-info-nav .buttons button {
+  background-color: var(--black);
+  border-radius: 0;
+}
+.cart-info-nav .buttons button:hover {
+  background-color: transparent;
+  transition: var(--trans);
+  color: var(--black);
+}
+.cart-info-nav .buttons span {
+  font-size: 1.5rem;
+  text-align: center;
+  display: inline-block;
+  width: 100px;
+}
+#unique {
+  margin-top: 1rem;
+}
+/* media query for button */
+@media screen and (max-width: 1100px) {
+  .buttons-one {
+    flex-direction: column;
+  }
+  .buttons-one a {
+    width: 90%;
+    margin: 3px auto;
+  }
+  .pop-image img {
+    margin: 1rem;
+    width: 100%;
+  }
+  .pop-up {
+    overflow: scroll;
+    grid-template-columns: 1fr;
+  }
+  .pop-info {
+    text-align: center;
+  }
+  .cart-info-nav .buttons {
+    display: inline;
+  }
+  .cart-contact {
+    flex-direction: column;
+  }
+  .cart-contact > div {
+    width: 100%;
+    flex-wrap: wrap;
+  }
+}
+.image-item {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: var(--trans);
+}
+.image-item.active {
+  opacity: 1;
+}
+/* image descrption */
+.image-item .img-desc {
+  width: 400px;
+  position: absolute;
+  bottom: 5rem;
+  padding: 1rem 2rem 4rem 2rem;
+  left: -400px;
+  opacity: 0;
+  background-color: rgba(255, 255, 255, 0.8);
+  color: #333;
+
+  z-index: 10;
+}
+.image-item.active .img-desc {
+  opacity: 1;
+  transform: translateX(400px);
+  transition: var(--trans);
+}
+.img-desc:hover {
+  box-shadow: 1px 1px 1px 1px var(--grey);
+}
+.img-desc h2 {
+  margin-bottom: 0.5rem;
+}
+.img-desc p {
+  margin-bottom: 0.5rem;
+}
+.buttons button#prev {
+  position: absolute;
+  top: 50%;
+  left: 1rem;
+}
+
+.buttons button#next {
+  position: absolute;
+  top: 50%;
+  right: 1rem;
+}
+.shop {
+  position: absolute;
+  text-transform: capitalize;
+  background-color: var(--black);
+  color: var(--grey);
+  text-decoration: none;
+  padding: 1rem 3rem;
+}
+.shop:hover {
+  background-color: transparent;
+  transition: var(--trans);
+  color: var(--black);
+  font-weight: bold;
+  border: 1px solid var(--black);
+}
+.buttons button {
+  border: 1px solid var(--grey);
+  background-color: transparent;
+  color: var(--grey);
+  cursor: pointer;
+  padding: 1rem;
+  border-radius: 50%;
+  outline: none;
+}
+.buttons button:hover {
+  border-color: var(--black);
+  background-color: var(--black);
+  transition: var(--trans);
+}
+
+/* adding background to each div */
+.image-item .img-desc h1 {
+  margin-bottom: 1rem;
+}
+.image-item:first-child {
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url("/images/hero-1.jpg") no-repeat center center/cover;
+}
+.image-item:nth-child(2) {
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url("/images/hero-2.jpg") no-repeat center center/cover;
+}
+.image-item:nth-child(3) {
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url("/images/hero-3.jpg") no-repeat center center/cover;
+}
+.image-item:nth-child(4) {
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url("/images/hero-4.jpg") no-repeat center center/cover;
+}
+.image-item:last-child {
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url("/images/hero-5.jpg") no-repeat center center/cover;
 }
