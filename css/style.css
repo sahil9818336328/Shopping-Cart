@@ -76,6 +76,20 @@ body {
   transform: rotate(180deg) translate(1px, -4px);
 }
 
+.pop-info .close-cart a {
+  text-decoration: none;
+  color: red;
+}
+
+.pop-info .close-cart a:hover {
+  color: var(--black);
+  transition: var(--trans);
+}
+.close-cart-container {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+}
 /* nav */
 nav,
 .nav,
@@ -194,24 +208,29 @@ nav ul a:hover {
   height: 90vh;
   background-color: var(--grey-1);
 }
+
 .pop-up {
-  transform: translateY(-110%);
+  position: absolute;
+  top: -50rem;
+  left: 10%;
   opacity: 0;
-  margin: 4.2rem auto;
+  margin: 0 auto;
   background-color: var(--white);
   width: 80%;
-  height: 80%;
+  height: 75%;
   display: grid;
-  z-index: 999;
+  transition: var(--trans);
   grid-template-columns: repeat(2, 1fr);
 }
 .pop-up-visibility {
   opacity: 1;
-  transform: translateY(0);
+  top: 8rem;
   transition: var(--trans);
 }
 .pop-image {
   z-index: 1;
+  width: 100%;
+  height: 100%;
 }
 .pop-image img {
   box-shadow: 5px 6px 28px -2px rgba(0, 0, 0, 0.75);
@@ -273,18 +292,18 @@ nav ul a:hover {
   margin-bottom: 0.5rem;
 }
 .cart-contact {
-  margin-top: 2rem;
+  margin-top: 1rem;
   display: flex;
   justify-content: flex-start;
 }
 .cart-contact .fa-star,
 .cart-contact .fa-truck,
 .cart-contact .fa-envelope {
-  margin-right: 1rem;
+  margin-right: 0.5rem;
 }
 .cart-contact > div {
   text-align: center;
-  width: 12.5vw;
+  width: 12vw;
   height: 5vh;
   padding: 0.5rem;
   border: 1px solid var(--black);
@@ -350,11 +369,15 @@ form.cart {
     width: 100%;
   }
   .pop-up {
-    overflow: scroll;
+    overflow-y: scroll;
+    overflow-x: hidden;
     grid-template-columns: 1fr;
   }
   .pop-info {
     text-align: center;
+  }
+  .pop-info .cart {
+    margin: 1rem;
   }
   .cart-info-nav .buttons {
     display: inline;
@@ -365,6 +388,14 @@ form.cart {
   .cart-contact > div {
     width: 100%;
     flex-wrap: wrap;
+  }
+  .close-cart {
+    position: fixed;
+    top: 7.8rem;
+    right: 13.5vw;
+  }
+  .close-cart-container {
+    flex-direction: column;
   }
 }
 .image-item {
@@ -392,6 +423,11 @@ form.cart {
 
   z-index: 10;
 }
+.not-active {
+  pointer-events: none;
+  cursor: default;
+}
+
 .image-item.active .img-desc {
   opacity: 1;
   transform: translateX(400px);
