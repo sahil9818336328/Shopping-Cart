@@ -8,11 +8,13 @@ const grid = document.querySelector(".grid");
 const imageSlides = document.querySelectorAll(".image-item");
 const nextBtn = document.querySelector("#next");
 const prevBtn = document.querySelector("#prev");
+const imageContainer = document.querySelector(".image-container");
 
 window.addEventListener("DOMContentLoaded", showItems);
+
 let carouselItems = [
   {
-    id: 1,
+    id: 0,
     imgTitle: "Denim Jacket 1",
     imgPrice: "$10",
     subTotal: "$10",
@@ -22,7 +24,7 @@ let carouselItems = [
     img: "./images/hero-1.jpg",
   },
   {
-    id: 2,
+    id: 1,
     imgTitle: "Denim Jacket 2",
     imgPrice: "$20",
     subTotal: "$20",
@@ -32,7 +34,7 @@ let carouselItems = [
     img: "./images/hero-2.jpg",
   },
   {
-    id: 3,
+    id: 2,
     imgTitle: "Denim Jacket 3",
     imgPrice: "$30",
     subTotal: "$30",
@@ -42,7 +44,7 @@ let carouselItems = [
     img: "./images/hero-3.jpg",
   },
   {
-    id: 4,
+    id: 3,
     imgTitle: "Denim Jacket 4",
     imgPrice: "$40",
     subTotal: "$40",
@@ -52,7 +54,7 @@ let carouselItems = [
     img: "./images/hero-4.jpg",
   },
   {
-    id: 5,
+    id: 4,
     imgTitle: "Denim Jacket 5",
     imgPrice: "$50",
     subTotal: "$50",
@@ -149,7 +151,6 @@ function showItems() {
   });
 
   // carousel
-  let itemNo = 0;
 
   // function for next slide
   const nextSlide = () => {
@@ -158,18 +159,11 @@ function showItems() {
     getItem.classList.remove("active");
     if (getItem.nextElementSibling) {
       getItem.nextElementSibling.classList.add("active");
-
-      itemNo++;
-      tempArray = tempArray[itemNo];
-
-      console.log(tempArray);
-      // let tempitems = results.querySelectorAll(".pop-up");
-      // console.log(tempitems);
-      // tempitems = tempitems[itemNo];
-      // console.log(tempitems);
-      results.innerHTML = tempArray;
+      nextSlideTwo();
     } else {
       imageSlides[0].classList.add("active");
+
+      nextSlideTwo();
     }
   };
 
@@ -180,12 +174,112 @@ function showItems() {
     getItem.classList.remove("active");
     if (getItem.previousElementSibling) {
       getItem.previousElementSibling.classList.add("active");
+      itemNo--;
+      previousSlideTwo();
     } else {
       imageSlides[imageSlides.length - 1].classList.add("active");
+      itemNo = imageSlides.length - 1;
+      previousSlideTwo();
     }
   };
+
+  // event handlers for next and prev buttons
   nextBtn.addEventListener("click", nextSlide);
+
+  setInterval(nextSlide, 3000);
+
   prevBtn.addEventListener("click", previousSlide);
+}
+
+let itemNo = 0;
+function nextSlideTwo() {
+  itemNo++;
+
+  let getItemsFromDom = document.querySelector(".results");
+  if (itemNo >= getItemsFromDom.children.length) {
+    itemNo = 0;
+  }
+  let getCurrentActiveItem = document.querySelector(".active");
+  let buttonOfCurrentItem = getCurrentActiveItem.querySelector(".shopbtn-1");
+  let getImageDescOfCurrentItem = getCurrentActiveItem.querySelector(
+    ".img-desc"
+  );
+  let closeBtnFromCurrentPopup = getItemsFromDom.children[itemNo].querySelector(
+    ".close-cart"
+  );
+
+  // console.log(getItemsFromDom);
+  // console.log buttonOfCurrentItem);
+  buttonOfCurrentItem.addEventListener("click", () => {
+    getItemsFromDom.children[itemNo].classList.add("pop-up-visibility");
+    if (
+      getItemsFromDom.children[itemNo].classList.contains("pop-up-visibility")
+    ) {
+      getImageDescOfCurrentItem.style.display = "none";
+      closeBtnFromCurrentPopup.addEventListener("click", () => {
+        if (
+          getItemsFromDom.children[itemNo].classList.contains(
+            "pop-up-visibility"
+          )
+        ) {
+          getItemsFromDom.children[itemNo].classList.remove(
+            "pop-up-visibility"
+          );
+          getImageDescOfCurrentItem.style.display = "block";
+          nextBtn.classList.remove("not-active");
+          prevBtn.classList.remove("not-active");
+        }
+      });
+
+      nextBtn.classList.add("not-active");
+      prevBtn.classList.add("not-active");
+    }
+  });
+}
+
+function previousSlideTwo() {
+  // itemNo--;
+  let getItemsFromDom = document.querySelector(".results");
+  // console.log(getItemsFromDom);
+  let getCurrentActiveItem = document.querySelector(".active");
+  // console.log(getCurrentActiveItem);
+  let buttonOfCurrentItem = getCurrentActiveItem.querySelector(".shopbtn-1");
+  // console.log(buttonOfCurrentItem);
+  let getImageDescOfCurrentItem = getCurrentActiveItem.querySelector(
+    ".img-desc"
+  );
+  // console.log(getImageDescOfCurrentItem);
+  let closeBtnFromCurrentPopup = getItemsFromDom.children[itemNo].querySelector(
+    ".close-cart"
+  );
+  // console.log(closeBtnFromCurrentPopup);
+  // console.log(getItemsFromDom);
+  // console.log buttonOfCurrentItem);
+  buttonOfCurrentItem.addEventListener("click", () => {
+    getItemsFromDom.children[itemNo].classList.add("pop-up-visibility");
+    if (
+      getItemsFromDom.children[itemNo].classList.contains("pop-up-visibility")
+    ) {
+      getImageDescOfCurrentItem.style.display = "none";
+      closeBtnFromCurrentPopup.addEventListener("click", () => {
+        if (
+          getItemsFromDom.children[itemNo].classList.contains(
+            "pop-up-visibility"
+          )
+        ) {
+          getItemsFromDom.children[itemNo].classList.remove(
+            "pop-up-visibility"
+          );
+          getImageDescOfCurrentItem.style.display = "block";
+          nextBtn.classList.remove("not-active");
+          prevBtn.classList.remove("not-active");
+        }
+      });
+
+      nextBtn.classList.add("not-active");
+      prevBtn.classList.add("not-active");
+    }
+  });
 }
 
 // toggling
