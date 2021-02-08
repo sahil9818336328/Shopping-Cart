@@ -25,7 +25,7 @@ body {
 /* sidenav */
 
 .sidenav {
-  z-index: 10;
+  z-index: 30;
   position: absolute;
   top: 0;
   left: 0;
@@ -362,6 +362,7 @@ form.cart {
 #unique {
   margin-top: 1rem;
 }
+
 /* media query for button */
 @media screen and (max-width: 1100px) {
   .buttons-one {
@@ -402,6 +403,22 @@ form.cart {
   }
   .close-cart-container {
     flex-direction: column;
+  }
+  .subscribe .subscribe-content {
+    grid-template-columns: 1fr;
+    overflow: scroll;
+    overflow-x: hidden;
+    justify-content: center;
+    align-items: center;
+    place-items: center;
+  }
+
+  .subscribe-info form > a {
+    margin-bottom: 1rem;
+  }
+  .subscribe-info a.subscribe-close {
+    top: 0.4rem;
+    right: 1%;
   }
 }
 .image-item {
@@ -448,6 +465,9 @@ form.cart {
 .img-desc p {
   margin-bottom: 0.5rem;
 }
+.image-item .img-desc h1 {
+  margin-bottom: 1rem;
+}
 .buttons button#prev {
   position: absolute;
   top: 50%;
@@ -489,10 +509,92 @@ form.cart {
   transition: var(--trans);
 }
 
-/* adding background to each div */
-.image-item .img-desc h1 {
-  margin-bottom: 1rem;
+/* Subscribe */
+.subscribe {
+  position: fixed;
+  top: -100%;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  visibility: hidden;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 20;
+  transition: var(--trans);
 }
+.subscribe-visible {
+  visibility: visible;
+  top: 0;
+}
+.subscribe-content {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  width: 90%;
+  height: 70%;
+  margin: 8rem auto;
+  border-radius: 1rem;
+  background-color: var(--grey);
+}
+
+.subscribe-img img {
+  margin: 3rem 0.5rem;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  max-width: 100%;
+  border-radius: 1rem;
+  height: 430px;
+  object-fit: cover;
+}
+.subscribe-info {
+  text-align: center;
+  margin: 5rem;
+  display: flex;
+  gap: 1.5rem;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  word-spacing: 0.2rem;
+}
+.subscribe-info .subscribe-close {
+  border-radius: 50%;
+  padding: 0.5rem 1rem;
+  background-color: var(--black);
+  color: var(--white);
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  text-decoration: none;
+}
+.subscribe-info .subscribe-close:hover {
+  background-color: var(--green-3);
+  transition: var(--trans);
+}
+.subscribe-info span {
+  color: var(--green-3);
+}
+.subscribe-info input {
+  width: 100%;
+  padding: 1rem;
+  border-radius: 2rem;
+  border: none;
+  outline: none;
+}
+.subscribe-info form > a {
+  text-decoration: none;
+  border-radius: 2rem;
+  margin-top: 1rem;
+  display: inline-block;
+  color: var(--white);
+  background-color: var(--black);
+  padding: 1rem 2rem;
+}
+.subscribe-info form > a:hover {
+  background-color: var(--green-3);
+  transition: var(--trans);
+}
+/* adding background to each div */
+
 .image-item:first-child {
   background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
     url("../images/hero-1.jpg") no-repeat center center/cover;

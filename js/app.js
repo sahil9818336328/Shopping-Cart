@@ -9,6 +9,9 @@ const imageSlides = document.querySelectorAll(".image-item");
 const nextBtn = document.querySelector("#next");
 const prevBtn = document.querySelector("#prev");
 const imageContainer = document.querySelector(".image-container");
+const subscribe = document.querySelector(".subscribe");
+const subscribeClose = document.querySelector(".subscribe-close");
+
 let intervalTime;
 let time = 3000;
 let check = true;
@@ -135,6 +138,7 @@ function showItems() {
 
   // displaying the popup on click,making carousel buttons disabled
   shopbtn1.addEventListener("click", () => {
+    clearInterval(intervalTime);
     popUp.classList.add("pop-up-visibility");
     if (popUp.classList.contains("pop-up-visibility")) {
       imgDesc.style.display = "none";
@@ -150,6 +154,7 @@ function showItems() {
       imgDesc.style.display = "block";
       nextBtn.classList.remove("not-active");
       prevBtn.classList.remove("not-active");
+      intervalTime = setInterval(nextSlide, time);
     }
   });
 
@@ -167,14 +172,17 @@ function showItems() {
       imageSlides[0].classList.add("active");
       nextSlideTwo();
     }
+    // reset interval time if a user moves to next slide
     if (check) {
       clearInterval(intervalTime);
       intervalTime = setInterval(nextSlide, time);
     }
   };
+  // auto slide
   if (check) {
     intervalTime = setInterval(nextSlide, time);
   }
+
   // function for previous slide
   const previousSlide = () => {
     const getItem = document.querySelector(".active");
@@ -189,6 +197,7 @@ function showItems() {
       itemNo = imageSlides.length - 1;
       previousSlideTwo();
     }
+    // reset interval time if a user moves to previous slide
     if (check) {
       clearInterval(intervalTime);
       intervalTime = setInterval(nextSlide, time);
@@ -200,6 +209,7 @@ function showItems() {
   prevBtn.addEventListener("click", previousSlide);
 }
 
+// Basically working with the DOM from here...
 let itemNo = 0;
 function nextSlideTwo() {
   itemNo++;
@@ -218,7 +228,7 @@ function nextSlideTwo() {
   );
 
   // console.log(getItemsFromDom);
-  // console.log buttonOfCurrentItem);
+
   buttonOfCurrentItem.addEventListener("click", () => {
     clearInterval(intervalTime);
 
@@ -280,8 +290,6 @@ function previousSlideTwo() {
   );
 
   // console.log(closeBtnFromCurrentPopup);
-  // console.log(getItemsFromDom);
-  // console.log buttonOfCurrentItem);
 
   buttonOfCurrentItem.addEventListener("click", () => {
     clearInterval(intervalTime);
@@ -326,6 +334,7 @@ function previousSlideTwo() {
     }
   });
 }
+// working with the DOM finished.....
 
 // toggling
 hamburger.addEventListener("click", () => {
@@ -337,4 +346,12 @@ hamburger.addEventListener("click", () => {
 });
 closeBtn.addEventListener("click", () => {
   sidenav.classList.remove("show");
+});
+
+// Subscribe
+setTimeout(() => {
+  subscribe.classList.add("subscribe-visible");
+}, 5000);
+subscribeClose.addEventListener("click", () => {
+  subscribe.classList.remove("subscribe-visible");
 });
