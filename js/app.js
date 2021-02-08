@@ -9,6 +9,9 @@ const imageSlides = document.querySelectorAll(".image-item");
 const nextBtn = document.querySelector("#next");
 const prevBtn = document.querySelector("#prev");
 const imageContainer = document.querySelector(".image-container");
+let intervalTime;
+let time = 3000;
+let check = true;
 
 window.addEventListener("DOMContentLoaded", showItems);
 
@@ -162,11 +165,16 @@ function showItems() {
       nextSlideTwo();
     } else {
       imageSlides[0].classList.add("active");
-
       nextSlideTwo();
     }
+    if (check) {
+      clearInterval(intervalTime);
+      intervalTime = setInterval(nextSlide, time);
+    }
   };
-
+  if (check) {
+    intervalTime = setInterval(nextSlide, time);
+  }
   // function for previous slide
   const previousSlide = () => {
     const getItem = document.querySelector(".active");
@@ -181,13 +189,14 @@ function showItems() {
       itemNo = imageSlides.length - 1;
       previousSlideTwo();
     }
+    if (check) {
+      clearInterval(intervalTime);
+      intervalTime = setInterval(nextSlide, time);
+    }
   };
 
   // event handlers for next and prev buttons
   nextBtn.addEventListener("click", nextSlide);
-
-  setInterval(nextSlide, 3000);
-
   prevBtn.addEventListener("click", previousSlide);
 }
 
@@ -211,6 +220,8 @@ function nextSlideTwo() {
   // console.log(getItemsFromDom);
   // console.log buttonOfCurrentItem);
   buttonOfCurrentItem.addEventListener("click", () => {
+    clearInterval(intervalTime);
+
     getItemsFromDom.children[itemNo].classList.add("pop-up-visibility");
     if (
       getItemsFromDom.children[itemNo].classList.contains("pop-up-visibility")
@@ -225,9 +236,24 @@ function nextSlideTwo() {
           getItemsFromDom.children[itemNo].classList.remove(
             "pop-up-visibility"
           );
+
           getImageDescOfCurrentItem.style.display = "block";
           nextBtn.classList.remove("not-active");
           prevBtn.classList.remove("not-active");
+          if (check) {
+            intervalTime = setInterval(() => {
+              const getItem = document.querySelector(".active");
+              // console.log(getItem);
+              getItem.classList.remove("active");
+              if (getItem.nextElementSibling) {
+                getItem.nextElementSibling.classList.add("active");
+                nextSlideTwo();
+              } else {
+                imageSlides[0].classList.add("active");
+                nextSlideTwo();
+              }
+            }, time);
+          }
         }
       });
 
@@ -252,11 +278,16 @@ function previousSlideTwo() {
   let closeBtnFromCurrentPopup = getItemsFromDom.children[itemNo].querySelector(
     ".close-cart"
   );
+
   // console.log(closeBtnFromCurrentPopup);
   // console.log(getItemsFromDom);
   // console.log buttonOfCurrentItem);
+
   buttonOfCurrentItem.addEventListener("click", () => {
+    clearInterval(intervalTime);
+
     getItemsFromDom.children[itemNo].classList.add("pop-up-visibility");
+
     if (
       getItemsFromDom.children[itemNo].classList.contains("pop-up-visibility")
     ) {
@@ -273,6 +304,20 @@ function previousSlideTwo() {
           getImageDescOfCurrentItem.style.display = "block";
           nextBtn.classList.remove("not-active");
           prevBtn.classList.remove("not-active");
+          if (check) {
+            intervalTime = setInterval(() => {
+              const getItem = document.querySelector(".active");
+              // console.log(getItem);
+              getItem.classList.remove("active");
+              if (getItem.nextElementSibling) {
+                getItem.nextElementSibling.classList.add("active");
+                nextSlideTwo();
+              } else {
+                imageSlides[0].classList.add("active");
+                nextSlideTwo();
+              }
+            }, time);
+          }
         }
       });
 
