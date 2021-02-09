@@ -11,6 +11,7 @@ const prevBtn = document.querySelector("#prev");
 const imageContainer = document.querySelector(".image-container");
 const subscribe = document.querySelector(".subscribe");
 const subscribeClose = document.querySelector(".subscribe-close");
+const navbar = document.querySelector("nav");
 
 let intervalTime;
 let time = 3000;
@@ -354,4 +355,15 @@ setTimeout(() => {
 }, 5000);
 subscribeClose.addEventListener("click", () => {
   subscribe.classList.remove("subscribe-visible");
+});
+
+window.addEventListener("scroll", () => {
+  const scrollHeight = window.pageYOffset;
+  const navHeight = navbar.getBoundingClientRect().height;
+
+  if (scrollHeight > navHeight) {
+    navbar.classList.add("fixed-nav");
+  } else {
+    navbar.classList.remove("fixed-nav");
+  }
 });
