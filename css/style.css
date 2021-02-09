@@ -18,6 +18,9 @@
   margin: 0;
   padding: 0;
 }
+html {
+  scroll-behavior: smooth;
+}
 
 body {
   font-family: "Montserrat", sans-serif;
@@ -590,9 +593,7 @@ form.cart {
   background-color: var(--grey);
 }
 .hr-line a {
-  /* font-size: 1.2rem; */
   text-decoration: none;
-  /* font-weight: bolder; */
   color: var(--black);
 }
 .hr-line a i {
@@ -601,10 +602,25 @@ form.cart {
   margin-right: 0.5rem;
   color: var(--black);
 }
-
+.hr-line-2 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+}
+.hr-line-2 a,
+.hr-line-2 a i {
+  border-color: var(--grey-1);
+  color: var(--grey-1);
+}
+.hr-line-2 a.active,
+.hr-line-2 a i.active {
+  border-color: var(--black);
+  color: var(--black);
+}
 /* image slider 2 */
 .normal-slider {
-  margin: 3rem 0;
+  margin: 4rem 0;
 }
 .image-slider-2 {
   display: grid;
@@ -665,6 +681,74 @@ form.cart {
   color: var(--white);
   transition: var(--trans);
 }
+
+/* normal slider 2 */
+.normal-slider-2 {
+  margin: 3rem 0;
+}
+.normal-slider-2 .item-slide-1 {
+  text-align: center;
+  line-height: 1.5rem;
+}
+.normal-slider-2 .item-slide-1 a {
+  font-weight: bolder;
+  background-color: var(--grey);
+  text-decoration: none;
+  padding: 0.5rem 2.5rem;
+  color: var(--black);
+  display: inline-block;
+  border: 0.1px solid var(--black);
+}
+.normal-slider-2 .item-slide-1 i {
+  color: var(--yellow-1);
+}
+.autofit {
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+.normal-slider-2 .item-slide-1 img {
+  max-width: 100%;
+  height: 25vh;
+}
+.normal-slider-2 .item-slide-1 a:hover {
+  background-color: var(--black);
+  color: var(--white);
+  transition: var(--trans);
+}
+/* scroll to top */
+.topLink {
+  text-decoration: none;
+  font-size: 1.25rem;
+  position: fixed;
+  bottom: 3rem;
+  right: 2.5rem;
+  background: var(--green-4);
+  width: 2rem;
+  height: 2rem;
+  display: grid;
+  place-items: center;
+  border-radius: 0.5rem;
+  color: var(--white);
+  animation: glow 2s ease-in-out infinite;
+  visibility: hidden;
+  z-index: -100;
+}
+.show-link {
+  visibility: visible;
+  z-index: 100;
+}
+@keyframes glow {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.5);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
 /* adding background to each div */
 
 .image-item:first-child {
@@ -721,6 +805,10 @@ form.cart {
   }
   .normal-slider .image-slider-2 {
     grid-template-columns: 1fr;
+  }
+  .hr-line-2 {
+    flex-direction: column;
+    gap: 1;
   }
 }
 

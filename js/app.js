@@ -12,6 +12,7 @@ const imageContainer = document.querySelector(".image-container");
 const subscribe = document.querySelector(".subscribe");
 const subscribeClose = document.querySelector(".subscribe-close");
 const navbar = document.querySelector("nav");
+const toTop = document.querySelector(".topLink");
 
 let intervalTime;
 let time = 3000;
@@ -365,5 +366,11 @@ window.addEventListener("scroll", () => {
     navbar.classList.add("fixed-nav");
   } else {
     navbar.classList.remove("fixed-nav");
+  }
+
+  if (scrollHeight > 500) {
+    toTop.classList.add("show-link");
+  } else {
+    toTop.classList.remove("show-link");
   }
 });
