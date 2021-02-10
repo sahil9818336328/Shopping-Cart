@@ -28,7 +28,7 @@ window.addEventListener("DOMContentLoaded", () => {
 let carouselItems = [
   {
     id: 0,
-    imgTitle: "Denim Jacket 1",
+    imgTitle: "Denim Jackets 1",
     imgPrice: "$10",
     subTotal: "$10",
     brand: "Denim",
@@ -392,28 +392,28 @@ const slideItems = [
     id: 2,
     title: "US POLO ASSN.",
     img: "./images/item-2.png",
-    category: "Jacket",
+    category: "Jackets",
     price: "$40",
   },
   {
     id: 3,
     title: "Denim",
     img: "./images/img-4.png",
-    category: "Shirt",
+    category: "Shirts",
     price: "$30",
   },
   {
     id: 4,
     title: "Kappa",
     img: "./images/img-6.png",
-    category: "Cap",
+    category: "Caps",
     price: "$20",
   },
   {
     id: 5,
     title: "Denim",
     img: "./images/item-1.png",
-    category: "Jacket",
+    category: "Jackets",
     price: "$50",
   },
   {
@@ -427,21 +427,21 @@ const slideItems = [
     id: 7,
     title: "Denim shirt",
     img: "./images/slide-2.png",
-    category: "Shirt",
+    category: "Shirts",
     price: "$40",
   },
   {
     id: 8,
     title: "Nike cap",
     img: "./images/slide-3.png",
-    category: "Cap",
+    category: "Caps",
     price: "$30",
   },
   {
     id: 9,
     title: "Leather jacket",
     img: "./images/slide-4.png",
-    category: "Jacket",
+    category: "Jackets",
     price: "$20",
   },
   {
@@ -462,7 +462,7 @@ const slideItems = [
     id: 12,
     title: "Denim Shirt",
     img: "./images/slide-6.png",
-    category: "Shirt",
+    category: "Shirts",
     price: "$20",
   },
   {
@@ -476,14 +476,14 @@ const slideItems = [
     id: 14,
     title: "Reebok cap",
     img: "./images/slide-7.png",
-    category: "Cap",
+    category: "Caps",
     price: "$10",
   },
   {
     id: 15,
     title: "Brown Leather",
     img: "./images/slide-8.png",
-    category: "Jacket",
+    category: "Jackets",
     price: "$30",
   },
   {
@@ -504,14 +504,14 @@ const slideItems = [
     id: 18,
     title: "Reebok shirt",
     img: "./images/slide-11.png",
-    category: "Shirt",
+    category: "Shirts",
     price: "$30",
   },
   {
     id: 19,
     title: "Nike shirt",
     img: "./images/slide-12.png",
-    category: "Shirt",
+    category: "Shirts",
     price: "$20",
   },
   {
@@ -539,21 +539,21 @@ const slideItems = [
     id: 20,
     title: "Puma cap",
     img: "./images/slide-16.png",
-    category: "Cap",
+    category: "Caps",
     price: "$10",
   },
   {
     id: 21,
     title: "Nike cap",
     img: "./images/slide-17.png",
-    category: "Cap",
+    category: "Caps",
     price: "$15",
   },
   {
     id: 22,
     title: "Reebok cap",
     img: "./images/slide-18.png",
-    category: "Cap",
+    category: "Caps",
     price: "$10",
   },
 ];
@@ -565,7 +565,7 @@ function displayCategoryItems(menuItems) {
       <h3>${item.title}</h3>
       <i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star-half" aria-hidden="true"></i>
       <p>${item.price}</p>
-      <a href="#">ADD TO CART</a>
+      <a href="javascript:function f(e){e.preventDefault();}">ADD TO CART</a>
     </div>`;
   });
   displayCategoryArray = displayCategoryArray.join("");
