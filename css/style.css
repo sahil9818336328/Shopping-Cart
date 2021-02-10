@@ -602,21 +602,34 @@ form.cart {
   margin-right: 0.5rem;
   color: var(--black);
 }
-.hr-line-2 {
+
+.btn-container-1 {
+  margin: 3rem 0 4rem 0;
   display: flex;
   justify-content: center;
-  align-items: center;
-  gap: 2rem;
 }
-.hr-line-2 a,
-.hr-line-2 a i {
-  border-color: var(--grey-1);
-  color: var(--grey-1);
+.btn-container-1 span {
+  font-weight: bold;
+  color: #1b4332;
 }
-.hr-line-2 a.active,
-.hr-line-2 a i.active {
-  border-color: var(--black);
+.unique-btn {
+  background: transparent;
+  border: 0.1px solid var(--black);
+  font-size: 1rem;
+  text-transform: capitalize;
+  margin: 0 0.5rem;
+  letter-spacing: 1px;
+  border-radius: 1rem;
+  padding: 0.375rem 0.75rem;
   color: var(--black);
+  cursor: pointer;
+  transition: var(--trans);
+  width: 10%;
+  outline: none;
+}
+.unique-btn:hover {
+  background: var(--black);
+  color: var(--white);
 }
 /* image slider 2 */
 .normal-slider {
@@ -810,10 +823,22 @@ form.cart {
     flex-direction: column;
     gap: 1;
   }
+  .btn-container-1 {
+    flex-direction: column;
+    align-items: center;
+  }
+  .btn-container-1 .unique-btn {
+    font-weight: bold;
+    margin: 0.3rem 0;
+    width: 100% !important;
+  }
 }
 
 /* media query  */
 @media screen and (max-width: 1100px) {
+  .btn-container-1 .unique-btn {
+    width: 50%;
+  }
   .buttons-one {
     flex-direction: column;
   }
