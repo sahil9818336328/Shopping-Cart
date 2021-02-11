@@ -15,6 +15,8 @@ const navbar = document.querySelector("nav");
 const toTop = document.querySelector(".topLink");
 const autofit = document.querySelector(".autofit");
 const btnContainer = document.querySelector(".btn-container-1");
+const carouselSlides = document.querySelectorAll(".imageCarouselContainer");
+const circle = document.querySelectorAll(".circle");
 
 let intervalTime;
 let time = 3000;
@@ -617,3 +619,28 @@ function displayButtons() {
     });
   });
 }
+
+// Carousel
+const circleContainer = document.querySelector(".circle-container");
+circleContainer.addEventListener("click", (e) => {
+  // removing active class from all buttons
+  circle.forEach((btn) => {
+    btn.classList.remove("active-btn");
+  });
+  // adding active class to the current button
+  e.target.classList.add("active-btn");
+
+  const btnid = e.target.dataset.id;
+  // console.log(btnid);
+  const element = document.getElementById(btnid);
+  // console.log(element);
+  carouselSlides.forEach((item) => {
+    // console.log(item);
+    if (e.target.dataset.id) {
+      item.classList.remove("active-1");
+      if (btnid === element.getAttribute("id")) {
+        element.classList.add("active-1");
+      }
+    }
+  });
+});
