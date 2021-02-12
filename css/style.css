@@ -911,6 +911,26 @@ form.cart {
   border: 0.1px solid var(--black);
   color: var(--white);
 }
+
+/* footer */
+.footer {
+  background-color: rgba(0, 0, 0, 0.9);
+}
+.footer .footer-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  color: var(--grey);
+  padding: 4rem 0;
+  line-height: 2rem;
+}
+.footer-item h1 {
+  margin-bottom: 1.5rem;
+}
+.footer-item p:hover {
+  color: var(--red);
+  transition: var(--trans);
+  cursor: pointer;
+}
 /* adding background to each div */
 
 .image-item:first-child {
@@ -1009,17 +1029,17 @@ form.cart {
   .imageCarousel-2 .imageCarouselContainer {
     height: 90vh !important;
   }
+  .footer-container {
+    text-align: center;
+    gap: 2rem;
+  }
 }
 
 /* media query  */
 @media screen and (max-width: 1100px) {
-  /* .newsletter {
-    height: 50vh;
-  } */
-  /* .newsletter .newsletter-container {
-    gap: 1rem;
-    grid-template-columns: 1fr;
-  } */
+  .footer-container {
+    gap: 2rem;
+  }
   .newsletter .newsletter-container form > a {
     margin-top: 1rem;
   }
