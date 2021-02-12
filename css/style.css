@@ -722,7 +722,7 @@ form.cart {
 }
 .normal-slider-2 .item-slide-1 img {
   max-width: 100%;
-  height: 25vh;
+  height: 20vh;
 }
 .normal-slider-2 .item-slide-1 a:hover {
   background-color: var(--black);
