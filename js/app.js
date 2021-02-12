@@ -644,3 +644,28 @@ circleContainer.addEventListener("click", (e) => {
     }
   });
 });
+
+// scroll links section
+const links = document.querySelectorAll(".nav-link");
+links.forEach((link) => {
+  link.addEventListener("click", (e) => {
+    e.preventDefault();
+    const id = e.currentTarget.getAttribute("href").slice(1);
+    // console.log(id);
+    const element = document.getElementById(id);
+    // console.log(element);
+    const navHeight = navbar.getBoundingClientRect().height;
+    const fixedNav = navbar.classList.contains("fixed-nav");
+    let position = element.offsetTop - navHeight;
+
+    if (!fixedNav) {
+      position = position - navHeight;
+    }
+
+    window.scrollTo({
+      left: 0,
+      top: position,
+    });
+    sidenav.classList.remove("show");
+  });
+});
