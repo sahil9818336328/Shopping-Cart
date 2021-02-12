@@ -1019,7 +1019,7 @@ form.cart {
     width: 100% !important;
   }
   .imageCarousel-2 .circle-container .circle {
-    margin: 5rem 0.1rem !important;
+    margin: 7rem 0.1rem !important;
   }
   .imageCarousel-2 .circle-container {
     position: absolute;
@@ -1027,10 +1027,10 @@ form.cart {
     left: 43% !important;
   }
   .imageCarousel-2 {
-    height: 90vh !important;
+    height: 100vh !important;
   }
   .imageCarousel-2 .imageCarouselContainer {
-    height: 90vh !important;
+    height: 100vh !important;
   }
   .footer-container {
     text-align: center;
