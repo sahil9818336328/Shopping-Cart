@@ -931,6 +931,9 @@ form.cart {
   transition: var(--trans);
   cursor: pointer;
 }
+.footer-item p i {
+  margin-right: 0.5rem;
+}
 /* adding background to each div */
 
 .image-item:first-child {
