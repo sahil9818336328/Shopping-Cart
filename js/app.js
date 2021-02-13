@@ -677,6 +677,11 @@ links.forEach((link) => {
 cartBtn.addEventListener("click", () => {
   cart.classList.add("show-cart");
   if (navbar.classList.contains("fixed-nav")) {
+    const fixedNav = navbar.classList.contains("fixed-nav");
+    const navElement = document.querySelector(".fixed-nav");
+    const fixedNavHeight = navElement.offsetTop;
+    console.log(fixedNavHeight);
+    cart.style.top = `${fixedNavHeight}%`;
     cart.classList.add("fixed-cart");
   }
 });

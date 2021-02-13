@@ -150,8 +150,8 @@ nav ul a:hover {
   transition: var(--trans);
 }
 .cart.fixed-cart {
-  position: fixed;
-  top: 0;
+  position: absolute;
+  /* top: 0; */
   right: -40%;
   z-index: 999;
   background-color: var(--grey-1);
