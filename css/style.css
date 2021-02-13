@@ -142,7 +142,17 @@ nav ul a:hover {
 .cart {
   position: absolute;
   top: 0;
-  right: -100%;
+  right: -40%;
+  z-index: 999;
+  background-color: var(--grey-1);
+  min-height: 50%;
+  padding: 1rem;
+  transition: var(--trans);
+}
+.cart.fixed-cart {
+  position: fixed;
+  top: 0;
+  right: -40%;
   z-index: 999;
   background-color: var(--grey-1);
   min-height: 50%;
@@ -151,7 +161,7 @@ nav ul a:hover {
 }
 .cart.show-cart {
   right: 0;
-  transform: rotateY(-360deg);
+  transform: rotateY(360deg);
 }
 .cart #cart-cross {
   position: absolute;

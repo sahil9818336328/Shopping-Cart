@@ -90,7 +90,7 @@ function showItems() {
           <div class="pop-image">
               <img src="${item.img}" alt="">
               <div class="buttons-one">
-                <a href="#"> <i class="fa fa-cart-plus" aria-hidden="true"></i> Add to Cart</a>
+                <a href="#"> <i class="fa fa-cart-plus" aria-hidden="true"></i> View Offer</a>
               <a href="#"> <i class="fa fa-credit-card" aria-hidden="true"></i> Buy Now</a>
               </div>
             </div>
@@ -676,12 +676,73 @@ links.forEach((link) => {
 // show cart
 cartBtn.addEventListener("click", () => {
   cart.classList.add("show-cart");
+  if (navbar.classList.contains("fixed-nav")) {
+    cart.classList.add("fixed-cart");
+  }
 });
 // close cart
 cartCross.addEventListener("click", () => {
   cart.classList.remove("show-cart");
 });
+
 window.addEventListener("DOMContentLoaded", () => {
+  const getAllButtons = btnContainer.querySelectorAll(".unique-btn");
+  // console.log(getAllButtons);
+  // if in case we filter items / for accessing the buttons ...
+  getAllButtons.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const addToCartBtnTwo = document.querySelectorAll(".addToCart");
+      addToCartBtnTwo.forEach((btn) => {
+        btn.addEventListener("click", (e) => {
+          let fullPathTwo = e.target.parentElement.children[0].src;
+          // console.log(fullPathTwo);
+          let positionTwo = fullPathTwo.indexOf("images");
+          // console.log(positionTwo);
+          let partialPathTwo = fullPathTwo.slice(positionTwo);
+          // console.log(partialPathTwo);
+          let cartItemsTwo = {};
+          cartItemsTwo.img = `${partialPathTwo}`;
+          // console.log(cartItemsTwo);
+          let itemNameTwo = e.target.parentElement.children[1].textContent;
+          // console.log(itemNameTwo);
+          cartItemsTwo.name = itemNameTwo;
+
+          let itemPriceTwo = e.target.previousElementSibling.textContent;
+
+          let finalPriceTwo = itemPriceTwo.slice(1).trim();
+          // console.log(itemPriceTwo);
+          cartItemsTwo.price = finalPriceTwo;
+          // console.log(cartItemsTwo);
+
+          const cartItemTwo = document.createElement("div");
+          cartItemTwo.className = "cart-content";
+
+          // console.log(cartItem);
+          cartItemTwo.innerHTML = `
+       <img src="${cartItemsTwo.img}" id="item-img">
+      <div class="item-info">
+        <p id="cart-item-title">${cartItemsTwo.name} </p>
+      
+      <span id="cart-item-price">$ ${cartItemsTwo.price}</span>
+      </div>
+      
+      <a href="javascript:function f(e){e.preventDefault();}" id='cart-item-remove'>
+              <i class="fas fa-trash fa-2x"></i>
+      </a>`;
+
+          const totalContainer = document.querySelector(
+            ".cart-total-container"
+          );
+          alert("items added to the cart");
+          cart.insertBefore(cartItemTwo, totalContainer);
+          showTotals();
+        });
+      });
+    });
+  });
+
+  // if we dont filter the items then ..
+
   const addToCartBtn = document.querySelectorAll(".addToCart");
   // console.log(addToCartBtn);
   addToCartBtn.forEach((btn) => {
@@ -698,11 +759,12 @@ window.addEventListener("DOMContentLoaded", () => {
       let itemName = e.target.parentElement.children[1].textContent;
       // console.log(itemName);
       cartItems.name = itemName;
+
       let itemPrice = e.target.previousElementSibling.textContent;
+
       let finalPrice = itemPrice.slice(1).trim();
       // console.log(itemPrice);
       cartItems.price = finalPrice;
-
       // console.log(cartItems);
 
       const cartItem = document.createElement("div");
