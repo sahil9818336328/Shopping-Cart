@@ -137,6 +137,103 @@ nav ul a {
 nav ul a:hover {
   color: var(--green-3);
 }
+
+/* cart */
+.cart {
+  position: absolute;
+  top: 0;
+  right: -50%;
+  z-index: 999;
+  background-color: var(--grey-1);
+  min-height: 50%;
+  padding: 1rem;
+  transition: var(--trans);
+}
+.cart.show-cart {
+  right: 0;
+  transform: rotateY(-360deg);
+}
+.cart #cart-cross {
+  position: absolute;
+  top: 0.3rem;
+  right: 0.7rem;
+  cursor: pointer;
+  color: var(--red);
+}
+.cart-content {
+  margin: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 3rem;
+  padding: 1rem;
+  background-color: var(--grey);
+}
+.cart .item-info {
+  font-weight: bold;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  align-items: center;
+  justify-content: center;
+}
+#cart-item-title {
+  font-size: 2rem;
+  text-transform: capitalize;
+}
+.cart .cart-content .fa-trash {
+  color: var(--black);
+}
+.cart .cart-content .fa-trash:hover {
+  color: var(--white);
+  transition: var(--trans);
+}
+#item-img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background-color: var(--black);
+}
+#item-img:hover {
+  transform: scale(1.1);
+  transition: var(--trans);
+  cursor: pointer;
+}
+.cart-total-container {
+  padding: 0.5rem 0.5rem 0 0.5rem;
+  margin: 4rem 1rem 0 1rem;
+  background-color: var(--white);
+}
+.cart-total-container .total {
+  margin-top: 1rem;
+  text-transform: capitalize;
+  font-size: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  gap: 2rem;
+}
+.cart-buttons-container {
+  gap: 0.5rem;
+  margin: 2rem 0;
+  display: flex;
+  justify-content: space-evenly;
+}
+.cart-buttons-container .cart-btn {
+  text-transform: uppercase;
+  text-decoration: none;
+  background-color: var(--black);
+  color: var(--white);
+  padding: 1rem 2rem;
+  margin-bottom: 0.5rem;
+  border: 0.1px solid var(--black);
+  transition: var(--trans);
+  cursor: pointer;
+}
+.cart-buttons-container .cart-btn:hover {
+  background-color: transparent;
+  color: var(--black);
+}
 .container {
   width: 78%;
   height: 100%;

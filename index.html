@@ -62,14 +62,48 @@
           <div class="fa-container">
             <i class="fa fa-search" aria-hidden="true"></i>
           </div>
-          <div class="fa-container">
-            <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+          <div class="fa-container" id="cart-btn-main">
+            <i class="fa fa-shopping-cart"  aria-hidden="true"></i>
             <div class="items">0</div>
           </div>
         </div>
       </div>
     </nav>
 
+  </div>
+
+  <!-- cart -->
+
+  <div class="cart">
+    <div style="text-align: center;">
+      <h1>ITEMS</h1>
+       <span id = cart-cross>&#10006</span>
+    </div>
+   
+    <div class="cart-content">
+      <img src="./images/slide-1.png" id="item-img">
+      <div class="item-info">
+        <p id="cart-item-title">jeans </p>
+      
+      <span id="cart-item-price">$ 50</span>
+      </div>
+      
+      <a href="javascript:function f(e){e.preventDefault();}" id='cart-item-remove'>
+              <i class="fas fa-trash fa-2x"></i>
+      </a>
+       
+    </div>
+    <div class="cart-total-container ">
+      <div class="total">
+            <h5>total :</h5>
+            <h5> $ <strong id="cart-total" >50</strong> </h5>
+      </div>
+
+      <div class="cart-buttons-container">
+            <a href="#" id="clear-cart" class="cart-btn">clear cart</a>
+            <a href="#" id="checkout-cart" class="cart-btn">checkout</a>
+      </div>
+     </div>
   </div>
   <!-- hidden side nav -->
 
@@ -546,6 +580,7 @@
 
   <!-- js file -->
   <script src="./js/app.js"></script>
+  <script src="./js/cart.js"></script>
 </body>
 
 </html>
