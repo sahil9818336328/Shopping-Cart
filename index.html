@@ -76,11 +76,11 @@
 
   <div class="cart">
     <div style="text-align: center;">
-      <h1>ITEMS</h1>
+      <h1><span id="itemCount">0 </span>   ITEMS </h1>
        <span id = cart-cross>&#10006</span>
     </div>
    
-    <div class="cart-content">
+    <!-- <div class="cart-content">
       <img src="./images/slide-1.png" id="item-img">
       <div class="item-info">
         <p id="cart-item-title">jeans </p>
@@ -92,11 +92,11 @@
               <i class="fas fa-trash fa-2x"></i>
       </a>
        
-    </div>
+    </div> -->
     <div class="cart-total-container ">
       <div class="total">
             <h5>total :</h5>
-            <h5> $ <strong id="cart-total" >50</strong> </h5>
+            <h5> $ <strong id="cart-total" >0</strong> </h5>
       </div>
 
       <div class="cart-buttons-container">
@@ -189,7 +189,7 @@
           <div class="pop-image">
               <img src="./images/hero-1.jpg" alt="">
               <div class="buttons-one">
-                <a href="#"> <i class="fa fa-cart-plus" aria-hidden="true"></i> Add to Cart</a>
+                <a href="#" class="addToCart"> <i class="fa fa-cart-plus" aria-hidden="true"></i> Add to Cart</a>
               <a href="#"> <i class="fa fa-credit-card" aria-hidden="true"></i> Buy Now</a>
               </div>
             </div>
@@ -304,7 +304,7 @@
       <h3>Pepe Jeans</h3>
       <i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star-half" aria-hidden="true"></i>
       <p>$50</p>
-      <a href="javascript:function f(e){e.preventDefault();}">ADD TO CART</a>
+      <a href="javascript:function f(e){e.preventDefault();}" class="addToCart">ADD TO CART</a>
     </div>
     <div class="item-slide">
        <a href="javascript:function f(e){e.preventDefault();}" class="cool">
@@ -316,7 +316,7 @@
       <h3>US POLO ASSN.</h3>
       <i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star-half" aria-hidden="true"></i>
       <p>$40</p>
-      <a href="javascript:function f(e){e.preventDefault();}">ADD TO CART</a>
+      <a href="javascript:function f(e){e.preventDefault();}" class="addToCart">ADD TO CART</a>
     </div>
     <div class="item-slide">
        <a href="javascript:function f(e){e.preventDefault();}" class="cool">
@@ -328,7 +328,7 @@
       <h3>Denim</h3>
       <i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star-half" aria-hidden="true"></i>
       <p>$30</p>
-      <a href="javascript:function f(e){e.preventDefault();}">ADD TO CART</a>
+      <a href="javascript:function f(e){e.preventDefault();}" class="addToCart">ADD TO CART</a>
     </div>
     <div class="item-slide">
        <a href="javascript:function f(e){e.preventDefault();}" class="cool">
@@ -340,7 +340,7 @@
       <h3>Kappa</h3>
       <i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star-half" aria-hidden="true"></i>
       <p>$20</p>
-      <a href="javascript:function f(e){e.preventDefault();}">ADD TO CART</a>
+      <a href="javascript:function f(e){e.preventDefault();}" class="addToCart">ADD TO CART</a>
     </div>
     
   </div>
@@ -388,7 +388,7 @@
       <h3>Pepe Jeans</h3>
       <i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star-half" aria-hidden="true"></i>
       <p>$50</p>
-      <a href="#">ADD TO CART</a>
+      <a href="#" class="addToCart">ADD TO CART</a>
     </div> -->
 
     
@@ -580,7 +580,7 @@
 
   <!-- js file -->
   <script src="./js/app.js"></script>
-  <script src="./js/cart.js"></script>
+
 </body>
 
 </html>

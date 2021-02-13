@@ -17,6 +17,9 @@ const autofit = document.querySelector(".autofit");
 const btnContainer = document.querySelector(".btn-container-1");
 const carouselSlides = document.querySelectorAll(".imageCarouselContainer");
 const circle = document.querySelectorAll(".circle");
+const cartBtn = document.querySelector("#cart-btn-main");
+const cart = document.querySelector(".cart");
+const cartCross = document.querySelector("#cart-cross");
 
 let intervalTime;
 let time = 3000;
@@ -567,7 +570,7 @@ function displayCategoryItems(menuItems) {
       <h3>${item.title}</h3>
       <i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star-half" aria-hidden="true"></i>
       <p>${item.price}</p>
-      <a href="javascript:function f(e){e.preventDefault();}">ADD TO CART</a>
+      <a href="javascript:function f(e){e.preventDefault();}" class="addToCart">ADD TO CART</a>
     </div>`;
   });
   displayCategoryArray = displayCategoryArray.join("");
@@ -668,4 +671,82 @@ links.forEach((link) => {
     });
     sidenav.classList.remove("show");
   });
+});
+
+// show cart
+cartBtn.addEventListener("click", () => {
+  cart.classList.add("show-cart");
+});
+// close cart
+cartCross.addEventListener("click", () => {
+  cart.classList.remove("show-cart");
+});
+window.addEventListener("DOMContentLoaded", () => {
+  const addToCartBtn = document.querySelectorAll(".addToCart");
+  // console.log(addToCartBtn);
+  addToCartBtn.forEach((btn) => {
+    btn.addEventListener("click", (e) => {
+      let fullPath = e.target.parentElement.children[0].src;
+      // console.log(fullPath);
+      let position = fullPath.indexOf("images");
+      // console.log(position);
+      let partialPath = fullPath.slice(position);
+      // console.log(partialPath);
+      let cartItems = {};
+      cartItems.img = `${partialPath}`;
+      // console.log(cartItems);
+      let itemName = e.target.parentElement.children[1].textContent;
+      // console.log(itemName);
+      cartItems.name = itemName;
+      let itemPrice = e.target.previousElementSibling.textContent;
+      let finalPrice = itemPrice.slice(1).trim();
+      // console.log(itemPrice);
+      cartItems.price = finalPrice;
+
+      // console.log(cartItems);
+
+      const cartItem = document.createElement("div");
+      cartItem.className = "cart-content";
+
+      // console.log(cartItem);
+      cartItem.innerHTML = `
+       <img src="${cartItems.img}" id="item-img">
+      <div class="item-info">
+        <p id="cart-item-title">${cartItems.name} </p>
+      
+      <span id="cart-item-price">$ ${cartItems.price}</span>
+      </div>
+      
+      <a href="javascript:function f(e){e.preventDefault();}" id='cart-item-remove'>
+              <i class="fas fa-trash fa-2x"></i>
+      </a>`;
+
+      const totalContainer = document.querySelector(".cart-total-container");
+      alert("items added to the cart");
+      cart.insertBefore(cartItem, totalContainer);
+      showTotals();
+    });
+  });
+
+  function showTotals() {
+    // console.log("testing");
+    const totalMoney = [];
+    const items = document.querySelectorAll("#cart-item-price");
+    // console.log(items);
+    items.forEach((item) => {
+      totalMoney.push(parseInt(item.textContent.slice(1).trim()));
+    });
+    // console.log(totalMoney);
+    const finaTotalMoney = totalMoney.reduce((total, Cvalue) => {
+      total += Cvalue;
+      return total;
+    }, 0);
+    // console.log(finaTotalMoney);
+    const cartTotal = document.querySelector("#cart-total");
+    cartTotal.textContent = finaTotalMoney;
+    const itemCount = document.querySelector(".items");
+    itemCount.textContent = totalMoney.length;
+    const count = document.querySelector("#itemCount");
+    count.textContent = totalMoney.length;
+  }
 });
