@@ -30,6 +30,7 @@ window.addEventListener("DOMContentLoaded", () => {
   displayCategoryItems(slideItems);
   displayButtons();
 });
+
 let carouselItems = [
   {
     id: 0,
@@ -104,19 +105,7 @@ function showItems() {
             <a href=""><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star-half" aria-hidden="true"></i><i class="fa fa-star-o" aria-hidden="true"></i></a><Span>3 reviews</Span>
             <hr class="grey">
            <p> Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur sit corrupti eius esse praesentium nostrum quas at illo distinctio nemo. Voluptate iure sint, eligendi ex laudantium dicta eaque voluptatibus natus.</p>
-            <form class="cart">
-              <label >Color :</label>
-              <select >
-                <option value="red">red</option>
-                <option value="black">black</option>
-              </select>
-              <label >Size :</label>
-              <select >
-                <option value="small">small</option>
-                <option value="medium">medium</option>
-                <option value="large">large</option>
-              </select>
-            </form>
+            
             <ul class="cart-info-nav">
               <li class="cart-info-item">Quantity :</li>
               <div class="buttons">
@@ -148,6 +137,11 @@ function showItems() {
   const popUp = document.querySelector(".pop-up");
   const closecart = document.querySelector(".close-cart");
 
+  imageSlides.forEach((item) => {
+    item.addEventListener("click", () => {
+      popUp.classList.remove("pop-up-visibility");
+    });
+  });
   // displaying the popup on click,making carousel buttons disabled
   shopbtn1.addEventListener("click", () => {
     clearInterval(intervalTime);
@@ -676,14 +670,6 @@ links.forEach((link) => {
 // show cart
 cartBtn.addEventListener("click", () => {
   cart.classList.add("show-cart");
-  if (navbar.classList.contains("fixed-nav")) {
-    const fixedNav = navbar.classList.contains("fixed-nav");
-    const navElement = document.querySelector(".fixed-nav");
-    const fixedNavHeight = navElement.offsetTop;
-    console.log(fixedNavHeight);
-    cart.style.top = `${fixedNavHeight}%`;
-    cart.classList.add("fixed-cart");
-  }
 });
 // close cart
 cartCross.addEventListener("click", () => {
@@ -738,7 +724,7 @@ window.addEventListener("DOMContentLoaded", () => {
           const totalContainer = document.querySelector(
             ".cart-total-container"
           );
-          alert("items added to the cart");
+          alertify.alert("Item was added successfully").set({ title: "DONE" });
           cart.insertBefore(cartItemTwo, totalContainer);
           showTotals();
         });
@@ -789,7 +775,7 @@ window.addEventListener("DOMContentLoaded", () => {
       </a>`;
 
       const totalContainer = document.querySelector(".cart-total-container");
-      alert("items added to the cart");
+      alertify.alert("Item was added successfully").set({ title: "DONE" });
       cart.insertBefore(cartItem, totalContainer);
       showTotals();
     });

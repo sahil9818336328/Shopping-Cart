@@ -139,29 +139,24 @@ nav ul a:hover {
 }
 
 /* cart */
+
 .cart {
-  position: absolute;
+  position: fixed;
   top: 0;
-  right: -40%;
+  right: -100%;
   z-index: 999;
   background-color: var(--grey-1);
-  min-height: 50%;
+  width: 600px;
+  height: 400px;
   padding: 1rem;
   transition: var(--trans);
-}
-.cart.fixed-cart {
-  position: absolute;
-  /* top: 0; */
-  right: -40%;
-  z-index: 999;
-  background-color: var(--grey-1);
-  min-height: 50%;
-  padding: 1rem;
-  transition: var(--trans);
+  overflow-y: auto;
+  opacity: 0;
 }
 .cart.show-cart {
   right: 0;
-  transform: rotateY(360deg);
+  opacity: 1;
+  transform: rotate(-360deg);
 }
 .cart #cart-cross {
   position: absolute;
@@ -330,7 +325,7 @@ nav ul a:hover {
   margin: 0 auto;
   background-color: var(--white);
   width: 80%;
-  height: 75%;
+  height: 70%;
   display: grid;
   transition: var(--trans);
   grid-template-columns: repeat(2, 1fr);
@@ -1081,6 +1076,14 @@ form.cart {
 }
 
 @media screen and (max-width: 650px) {
+  .cart {
+    right: -150%;
+    width: 100%;
+  }
+  #cart-item-title {
+    font-size: 1rem;
+    text-transform: capitalize;
+  }
   .newsletter {
     height: 50vh;
   }

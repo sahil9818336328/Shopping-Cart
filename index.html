@@ -5,8 +5,9 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Shop Me</title>
- 
- 
+ <!-- alertify plugin -->
+ <link rel="stylesheet" href="./alertifyjs/css/alertify.css">
+ <link rel="stylesheet" href="./alertifyjs/css/themes/default.css">
   <!-- font awesome icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"
     integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w=="
@@ -73,8 +74,8 @@
   </div>
 
   <!-- cart -->
-
-  <div class="cart">
+<div class="cart-container">
+ <div class="cart">
     <div style="text-align: center;">
       <h1><span id="itemCount">0 </span>   ITEMS </h1>
        <span id = cart-cross>&#10006</span>
@@ -105,6 +106,8 @@
       </div>
      </div>
   </div>
+</div>
+ 
   <!-- hidden side nav -->
 
   <div class="sidenav">
@@ -579,6 +582,7 @@
   </a>
 
   <!-- js file -->
+  <script src="./alertifyjs/alertify.min.js"></script>
   <script src="./js/app.js"></script>
 
 </body>
