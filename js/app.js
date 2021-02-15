@@ -20,6 +20,7 @@ const circle = document.querySelectorAll(".circle");
 const cartBtn = document.querySelector("#cart-btn-main");
 const cart = document.querySelector(".cart");
 const cartCross = document.querySelector("#cart-cross");
+const clearCart = document.querySelector("#clear-cart");
 
 let intervalTime;
 let time = 3000;
@@ -737,6 +738,9 @@ window.addEventListener("DOMContentLoaded", () => {
               const element = e.target.parentElement.parentElement;
               // console.log(element);
               cart.removeChild(element);
+              alertify
+                .alert("Item removed from the cart")
+                .set({ title: "DONE" });
               showTotals();
             });
           });
@@ -801,12 +805,26 @@ window.addEventListener("DOMContentLoaded", () => {
           const element = e.target.parentElement.parentElement;
           // console.log(element);
           cart.removeChild(element);
+          alertify.alert("Item removed from the cart").set({ title: "DONE" });
           showTotals();
         });
       });
     });
   });
 
+  // clear the cart
+  clearCart.addEventListener("click", () => {
+    const items = document.querySelectorAll(".cart-content");
+    items.forEach((item) => {
+      cart.removeChild(item);
+    });
+
+    alertify.alert("Cart is cleared").set({ title: "DONE" });
+
+    showTotals();
+  });
+
+  // update cart info
   function showTotals() {
     // console.log("testing");
     const totalMoney = [];
