@@ -726,7 +726,20 @@ window.addEventListener("DOMContentLoaded", () => {
           );
           alertify.alert("Item was added successfully").set({ title: "DONE" });
           cart.insertBefore(cartItemTwo, totalContainer);
+
           showTotals();
+
+          // remove item
+          const getTrashBtn = document.querySelectorAll("#cart-item-remove");
+          // console.log(getTrashBtn);
+          getTrashBtn.forEach((btn) => {
+            btn.addEventListener("click", (e) => {
+              const element = e.target.parentElement.parentElement;
+              // console.log(element);
+              cart.removeChild(element);
+              showTotals();
+            });
+          });
         });
       });
     });
@@ -777,7 +790,20 @@ window.addEventListener("DOMContentLoaded", () => {
       const totalContainer = document.querySelector(".cart-total-container");
       alertify.alert("Item was added successfully").set({ title: "DONE" });
       cart.insertBefore(cartItem, totalContainer);
+
       showTotals();
+
+      // remove item
+      const getTrashBtn = document.querySelectorAll("#cart-item-remove");
+      // console.log(getTrashBtn);
+      getTrashBtn.forEach((btn) => {
+        btn.addEventListener("click", (e) => {
+          const element = e.target.parentElement.parentElement;
+          // console.log(element);
+          cart.removeChild(element);
+          showTotals();
+        });
+      });
     });
   });
 
